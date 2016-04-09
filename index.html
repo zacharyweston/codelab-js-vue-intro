@@ -1,0 +1,27 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <title>Vue Chatbot</title>
+  <script src="https://cdn.jsdelivr.net/vue/latest/vue.js"></script>
+</head>
+<body>
+
+  <div id="vue-chatbot">
+    <input type="text" v-model="userInput"></input>
+  </div>
+
+  <p> Hi, 
+  </p>
+
+  <script>
+  new Vue({
+    el: '#vue-chatbot'
+    data: {
+      userInput: ""
+    }
+  })
+  </script>
+
+</body>
+</html>
