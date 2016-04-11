@@ -7,18 +7,24 @@
 </head>
 <body>
 
-  <div id="vue-chatbot">
-    <input type="text" v-model="userInput"></input>
+  <div id="vueChatbot">
+    <input type="text" placeholder="Talk to Chatbot 3000" v-model="userInput" v-on:keyup.enter="responseMethod"></input>
+    <div v-if="userInput">
+      <p> Hi, is {{userInput}} your name?</p>
+    </div>
   </div>
-
-  <p> Hi, 
-  </p>
 
   <script>
   new Vue({
-    el: '#vue-chatbot'
+    el: '#vueChatbot',
     data: {
       userInput: ""
+    }
+    methods: {
+      responseMethod {
+        userInput: {{userInput}}.toLowerCase();
+        console.log(userInput)
+      }
     }
   })
   </script>
