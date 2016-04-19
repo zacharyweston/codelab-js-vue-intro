@@ -1,33 +1,56 @@
 <!doctype html>
-
-<html lang="en">
-<head>
-  <title>Vue Chatbot</title>
-  <script src="https://cdn.jsdelivr.net/vue/latest/vue.js"></script>
-</head>
-<body>
-
-  <div id="vueChatbot">
-    <input type="text" placeholder="Talk to Chatbot 3000" v-model="userInput" v-on:keyup.enter="responseMethod"></input>
-    <div v-if="userInput">
-      <p> Hi, is {{userInput}} your name?</p>
-    </div>
-  </div>
-
-  <script>
-  new Vue({
-    el: '#vueChatbot',
-    data: {
-      userInput: ""
-    }
-    methods: {
-      responseMethod {
-        userInput: {{userInput}}.toLowerCase();
-        console.log(userInput)
-      }
-    }
-  })
-  </script>
-
-</body>
-</html>
+  <html lang="en">
+    <head>
+      <title>Vue Chatbot</title>
+      <script src="https://cdn.jsdelivr.net/vue/latest/vue.js"></script>
+    </head>
+      <body>
+        <div id="vueChatbot">
+          <input type="text" placeholder="Talk to Chatbot 3000" v-model="userInput" v-on:keyup.enter="responseMethod">
+          <div v-if="response">
+            <p>{{ response }}</p>
+          </div>
+        </div>
+        <script>
+          new Vue({
+            el: '#vueChatbot',
+            data: {
+              userInput: "",
+              response: ""
+            },
+            methods: {
+              responseMethod: function () {
+                var lowerCaseInput = this.userInput.toLowerCase();
+                if (lowerCaseInput == "hi" || lowerCaseInput == "hello") {
+                  this.response = "Greetings, human!";
+                }
+                else if (lowerCaseInput == "how are you?") {
+                  this.response = "I came into being through the excellent programming of my creator!";
+                }
+                else if (lowerCaseInput == "how old are you?") {
+                  this.response = "42";
+                }
+                else if (lowerCaseInput == "what is your name?") {
+                  this.response = "Chatbot 3000";
+                }
+                else if (lowerCaseInput == "where are you from?") {
+                  this.response = "The Internet";
+                }
+                else {
+                  randomNumber = Math.random ();
+                  if (randomNumber < 0.333) {
+                    this.response = "Yo";
+                  }
+                  else if (randomNumber > 0.666) {
+                    this.response = "You know it!";
+                  }
+                  else {
+                    this.response = "Could you repeat that?";
+                  }
+                }
+              }
+            }
+          });
+        </script>
+      </body>
+    </html>
