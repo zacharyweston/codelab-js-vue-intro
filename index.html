@@ -7,9 +7,7 @@
       <body>
         <div id="vueChatbot">
           <input type="text" placeholder="Talk to Chatbot 3000" v-model="userInput" v-on:keyup.enter="responseMethod">
-          <div v-if="response">
-            <p>{{ response }}</p>
-          </div>
+          <p v-if="response">{{ response }}</p>
         </div>
         <script>
           new Vue({
@@ -37,16 +35,12 @@
                   this.response = "The Internet";
                 }
                 else {
-                  randomNumber = Math.random ();
-                  if (randomNumber < 0.333) {
-                    this.response = "Yo";
-                  }
-                  else if (randomNumber > 0.666) {
-                    this.response = "You know it!";
-                  }
-                  else {
-                    this.response = "Could you repeat that?";
-                  }
+                  var randomResponses = [
+                    "Yo",
+                    "You know it!",
+                    "Could you repeat that?"
+                  ];
+                  this.response = randomResponses[Math.floor(Math.random() * randomResponses.length)];
                 }
               }
             }
